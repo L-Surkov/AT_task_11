@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import pages.components.CalendarComponent;
 import com.codeborne.selenide.SelenideElement;
@@ -102,7 +103,8 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage sendForm() {
-        Selenide.executeJavaScript("arguments[0].scrollIntoView({block:'center', behavior:'smooth'});", submitButton);
+        submitButton.shouldBe(Condition.visible);              // ждем визуализацию кнопки
+        Selenide.executeJavaScript("arguments[0].focus();", submitButton);
         submitButton.click();
 
         return this;
