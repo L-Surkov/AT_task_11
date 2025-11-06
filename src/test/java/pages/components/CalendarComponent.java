@@ -13,7 +13,6 @@ public class CalendarComponent {
     public void setDate(String day, String month, String year) {
         yearSelector.selectOption(year);
         monthSelector.selectOption(month);
-        $(daySelector).shouldBe(Condition.visible);
         $(String.format(daySelector, day)).click();
     }
 }
