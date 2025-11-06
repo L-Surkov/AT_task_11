@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class CalendarComponent {
 
     private SelenideElement yearSelector = $(".react-datepicker__year-select"),
-    monthSelector = $(".react-datepicker__month-select"),
-    daySelector = $(".react-datepicker__day--0%s:not(.react-datepicker__day--outside-month)");
+    monthSelector = $(".react-datepicker__month-select");
+    private String daySelector = ".react-datepicker__day--0%s:not(.react-datepicker__day--outside-month)";
     public void setDate(String day, String month, String year) {
         yearSelector.selectOption(year);
         monthSelector.selectOption(month);
