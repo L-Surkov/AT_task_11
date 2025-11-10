@@ -13,19 +13,13 @@ public class TestBase {
 
     @BeforeAll
     static void setupEnvironment() {
-        Configuration.browser = System.getenv("BROWSER_NAME");
-        Configuration.browserVersion = System.getenv("BROWSER_VERSION");
-        String browserSize = System.getenv("BROWSER_SIZE");
-
-        if (browserSize != null && !browserSize.isEmpty()) {
-            Configuration.browserSize = browserSize;
-        } else {
-            Configuration.browserSize = "1920x1080";
-        }
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
+        String browserSize = System.getProperty("browserSize", "1920x1080");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = System.getenv("SELENOID_WD_URL");
+        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
